@@ -29,7 +29,11 @@ def _set_auth_cookie(response: Response, token: str) -> None:
 
 
 def _clear_auth_cookie(response: Response) -> None:
-    response.delete_cookie(key=settings.COOKIE_NAME, path="/")
+    response.delete_cookie(
+        key=settings.COOKIE_NAME,
+        path="/",
+        samesite="lax",
+    )
 
 
 def _user_data(user: User) -> dict:
